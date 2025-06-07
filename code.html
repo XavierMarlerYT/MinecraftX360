@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Code</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            transition: background-color 0.5s ease;
+            background-color: #2F2F2F; /* Dark Grey */
+            color: white; /* Text color set to white for contrast */
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            border: 2px solid #444;
+            border-radius: 5px;
+            background-color: #333; /* Dark background for input */
+            color: white; /* White text in input */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .message {
+            margin-top: 20px;
+            color: red;
+        }
+        #subscribe {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background-color: #000;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        .easter-egg {
+            display: none;
+            font-size: 20px;
+            color: #fff;
+            font-weight: bold;
+            margin-top: 30px;
+        }
+        .easter-egg img {
+            width: 200px; /* Fix image size */
+            height: auto; /* Maintain aspect ratio */
+            margin-top: 20px;
+        }
+        .minecraft-link {
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            cursor: pointer;
+            visibility: hidden; /* Hidden (invisible) Minecraft link */
+        }
+        .minecraft-link img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Enter Code to Access the Download</h1>
+    <input type="text" id="codeInput" placeholder="Enter code" />
+    <button onclick="checkCode()">Submit</button>
+    <div class="message" id="message"></div>
+
+    <div class="easter-egg" id="easterEgg">
+        <p>Oops! You got it wrong again. But here's a little bonus!</p>
+        <p>💥 **Bonus!** Subscribe to @XavierMarler_YT for more cool stuff!</p>
+        <img src="https://static.wikia.nocookie.net/minecraft/images/e/ee/CreeperImage.png/revision/latest/scale-to-width/360?cb=20200224235848" alt="Creeper" />
+    </div>
+
+    <div id="subscribe">
+        <a href="https://www.youtube.com/@XavierMarler_YT" target="_blank" style="color: #fff; text-decoration: none;">Subscribe to @XavierMarler_YT!</a>
+    </div>
+
+    <div class="minecraft-link" onclick="redirectToMinecraft()">
+        <img src="https://example.com/minecraft-logo.png" alt="Minecraft Logo" />
+    </div>
+
+    <script>
+        let attempts = 0;
+
+        function checkCode() {
+            const code = document.getElementById('codeInput').value;
+            const messageDiv = document.getElementById('message');
+            const easterEggDiv = document.getElementById('easterEgg');
+            const body = document.body;
+
+            if (code === '9019') {
+                // Correct code for Minecraft download
+                messageDiv.innerHTML = 'Redirecting to the Minecraft download...';
+                window.location.href = 'https://vimm.net/vault/79837'; // Minecraft download link
+            } else if (code === '1324') {
+                // Correct code for Xenia Manager download
+                messageDiv.innerHTML = 'Redirecting to the Xenia Manager download...';
+                window.location.href = 'https://drive.usercontent.google.com/download?id=13d9lOSjU4HMcxpLIQZJVBsXxvYNgco58&export=download&authuser=0&confirm=t&uuid=5d33355a-99f3-4a01-97c9-f14a348f5992&at=ALoNOgnNymrwIkfaj2ht2_leJ9V9%3A1749283508033'; // Xenia Manager download link
+            } else {
+                attempts++;
+
+                // Check for second attempt and add background change
+                if (attempts === 2) {
+                    // Change background to solid blue and show the easter egg
+                    body.style.backgroundColor = '#0000FF'; // Solid blue background
+                    easterEggDiv.style.display = 'block'; // Show easter egg with Minecraft theme
+                    messageDiv.innerHTML = 'Wrong code, use the link provided in the Xenia folder in the Google Drive in the link in the description!';
+                    messageDiv.style.color = '#FFF'; // Make the text readable
+                } else {
+                    messageDiv.innerHTML = 'Wrong code, please try again! Use the link provided in the Xenia folder in the Google Drive in the link in the description!';
+                    messageDiv.style.color = 'red';
+                }
+            }
+        }
+
+        // Redirect to the official Minecraft website when clicking the bottom left corner
+        function redirectToMinecraft() {
+            window.location.href = 'https://minecraft.net';
+        }
+    </script>
+</body>
+</html>
